@@ -4,6 +4,8 @@
  * الصفحة الرئيسية - عرض كل الوصفات مع البحث والفلترة
  */
 
+session_start();
+
 // نضم ملف الإعدادات والكلاسات
 require_once 'config.php';
 require_once 'classes/Recipe.php';
@@ -50,7 +52,14 @@ $categories = $recipeObj->getCategories();
         </a>
         <ul class="navbar-links">
             <li><a href="index.php" class="active">🏠 الرئيسية</a></li>
-            <li><a href="add.php" class="btn-add">➕ أضف وصفة</a></li>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <li><span style="font-size: 0.9rem; margin-left: 10px; color: var(--text-light);">مرحباً، <?= htmlspecialchars($_SESSION['user_name']) ?></span></li>
+                <li><a href="add.php" class="btn-add">➕ أضف وصفة</a></li>
+                <li><a href="logout.php" class="btn-secondary btn-sm" style="border: none; color: var(--red-soft);">تسجيل الخروج</a></li>
+            <?php else: ?>
+                <li><a href="login.php" class="btn-secondary btn-sm">تسجيل الدخول</a></li>
+                <li><a href="register.php" class="btn-add">إنشاء حساب</a></li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>

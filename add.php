@@ -4,6 +4,14 @@
  * صفحة إضافة وصفة جديدة
  */
 
+session_start();
+
+// يجب أن يكون المستخدم مسجل الدخول لإضافة وصفة
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
 require_once 'config.php';
 require_once 'classes/Recipe.php';
 
@@ -91,7 +99,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </a>
         <ul class="navbar-links">
             <li><a href="index.php">🏠 الرئيسية</a></li>
+            <li><span style="font-size: 0.9rem; margin-left: 10px; color: var(--text-light);">مرحباً، <?= htmlspecialchars($_SESSION['user_name']) ?></span></li>
             <li><a href="add.php" class="active btn-add">➕ أضف وصفة</a></li>
+            <li><a href="logout.php" class="btn-secondary btn-sm" style="border: none; color: var(--red-soft);">تسجيل الخروج</a></li>
         </ul>
     </div>
 </nav>

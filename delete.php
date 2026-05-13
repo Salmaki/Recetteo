@@ -4,6 +4,13 @@
  * صفحة تأكيد وتنفيذ حذف الوصفة
  */
 
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
 require_once 'config.php';
 require_once 'classes/Recipe.php';
 
@@ -98,6 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_delete'])) {
         <a href="index.php" class="navbar-logo"><span class="emoji">🍳</span> وصفاتي</a>
         <ul class="navbar-links">
             <li><a href="index.php">🏠 الرئيسية</a></li>
+            <li><span style="font-size: 0.9rem; margin-left: 10px; color: var(--text-light);">مرحباً، <?= htmlspecialchars($_SESSION['user_name']) ?></span></li>
+            <li><a href="logout.php" class="btn-secondary btn-sm" style="border: none; color: var(--red-soft);">تسجيل الخروج</a></li>
         </ul>
     </div>
 </nav>
