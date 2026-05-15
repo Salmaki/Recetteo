@@ -6,12 +6,11 @@
 
 class Comment {
 
-    // كائن الاتصال بقاعدة البيانات
     private $pdo;
 
     /**
      * نمرر كائن PDO عند إنشاء الكائن
-     * @param PDO $pdo كائن الاتصال
+     * @param PDO 
      */
     public function __construct($pdo) {
         $this->pdo = $pdo;

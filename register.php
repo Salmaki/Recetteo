@@ -64,8 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <style>
         .auth-card {
             background: var(--white);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
-            box-shadow: 0 4px 24px var(--shadow);
+            box-shadow: 0 8px 32px var(--shadow);
             padding: 40px;
             max-width: 450px;
             margin: 40px auto;

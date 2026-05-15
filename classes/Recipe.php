@@ -1,12 +1,8 @@
 <?php
-/**
- * classes/Recipe.php
- * كلاس الوصفة - يحتوي على كل العمليات المتعلقة بالوصفات
- */
+
 
 class Recipe {
 
-    // كائن الاتصال بقاعدة البيانات
     private $pdo;
 
     /**
@@ -30,7 +26,7 @@ class Recipe {
             );
             $stmt->execute([$category]);
         } else {
-            // جلب كل الوصفات بدون فلترة
+         
             $stmt = $this->pdo->query(
                 "SELECT * FROM recipes ORDER BY created_at DESC"
             );

@@ -1,8 +1,4 @@
 <?php
-/**
- * view.php
- * صفحة عرض تفاصيل وصفة واحدة + اللايك + التعليقات
- */
 
 require_once 'config.php';
 require_once 'classes/Recipe.php';
